@@ -13,7 +13,7 @@
   <body>
       <div class="container">
     <h1>This is your class 1</h1>
-    <a  href="{{ url_for('take_att') }}" class="btn btn-primary mx-4 my-4">TakeAttendance</a>
+    <a  href="{{ url_for('take_att') }}" class="btn btn-primary mx-4 my-4" >TakeAttendance</a>
         </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -22,36 +22,49 @@
         <table class="table">
             <thead>
               <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">sno</th>
+                <th scope="col">Class</th>
+                <th scope="col">Date</th>
+                <th scope="col">XL-SHEET</th>
               </tr>
             </thead>
             <tbody>
+              
+               
+                {% for dates in date_att %}
+                <tr>
+                <th scope="row">{{loop.index}}</th>
+                <td>Class1</td>
+                <td>{{dates}}</td>
+                <td><form action="{{ url_for('view_att', date_time = dates) }}" method="post">
+                  
+                  <input type="submit">
+              </form></td></tr>
+                {% endfor %}
+              {% for dates in date_att_prev %}
               <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-              </tr>
+                <th scope="row">{{loop.index}}</th>
+                <td>Class1</td>
+                <td>{{dates}}</td>
+                <td><form action="{{ url_for('view_att', date_time = dates) }}" method="post">
+                  
+                  <input type="submit">
+              </form>
+              </td>
+            </tr>
+              {% endfor %}
+                
+                
+                
+              
+              
+              
             </tbody>
           </table>
     </div>
 
 
-
+    
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
